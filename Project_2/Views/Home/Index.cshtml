@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Bakery</h1>
+    <p class="lead">Welcome to Bakery Databases</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Products</h2>
+        <p>You can view all the products on this page</p>
+        <p><a class="btn btn-default" href="@Url.Action("Index", "Product")">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Sales</h2>
+        <p>Sales and saledetails are on this page</p>
+        <p><a class="btn btn-default" href="@Url.Action("Index", "Sale")">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Sign Up</h2>
+        <p>You can sign up as an Cutomer on this page</p>
+        <p><a class="btn btn-default" href="@Url.Action("Index", "Register")">Learn more &raquo;</a></p>
+    </div>
+</div>

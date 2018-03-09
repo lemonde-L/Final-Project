@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Project_2.Models.SaleDetail>
+
+@{
+    ViewBag.Title = "Receipt";
+}
+
+<div>
+    <h2>Receipt</h2>
+    <br />
+
+    <table class="table">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.SaleDetailQuantity)</th>
+            <th>@Html.DisplayNameFor(model => model.Product.ProductName)</th>
+            <th>@Html.DisplayNameFor(model => model.SaleDetailPriceCharged)</th>
+            <th>@Html.DisplayNameFor(model => model.SaleDetailDiscount)</th>
+            <th>Amount</th>
+        </tr>
+
+        @{decimal subtotal = 0;}
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@Html.DisplayFor(model => item.SaleDetailQuantity)</td>
+            <td>@Html.DisplayFor(model => item.Product.ProductName)</td>
+            <td>@Html.DisplayFor(model => item.SaleDetailPriceCharged)</td>
+            <td>@Html.DisplayFor(model => item.SaleDetailDiscount)</td>
+            <td>@(Math.Round((item.SaleDetailQuantity * item.SaleDetailPriceCharged - (decimal)item.SaleDetailDiscount), 2))</td>
+            @{subtotal += item.SaleDetailQuantity * item.SaleDetailPriceCharged - (decimal)item.SaleDetailDiscount;}
+        </tr>
+        }
+    </table>
+    <br />
+
+    <table class="table">
+        <tr>
+            <th>Subtotal</th>
+            <th>Sales Tax</th>
+            <th>Total</th>
+        </tr>
+        <tr>
+            <td>@(Math.Round(subtotal, 2))</td>
+            <td>@(Math.Round((subtotal * (decimal)0.09), 2))</td>
+            <td>@(Math.Round((subtotal * (decimal)1.09), 2))</td>
+        </tr>
+    </table>
+</div>

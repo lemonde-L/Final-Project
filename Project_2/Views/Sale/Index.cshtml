@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Project_2.Models.Sale>
+
+@{
+    ViewBag.Title = "Sales";
+}
+
+<div>
+    <h2>Sales</h2>
+    <br />
+    <table class="table">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.SaleKey)</th>
+            <th>@Html.DisplayNameFor(model => model.SaleDate)</th>
+            <th>Sale Details</th>
+            <th>Receipt</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(model => item.SaleKey)</td>
+                <td>@Html.DisplayFor(model => item.SaleDate)</td>
+                <td>@Html.ActionLink("Details", "Details", new { id = item.SaleKey }, null)</td>
+                <td>@Html.ActionLink("Receipt", "Receipt", new { id = item.SaleKey }, null)</td>
+            </tr>
+        }
+    </table>
+</div>
